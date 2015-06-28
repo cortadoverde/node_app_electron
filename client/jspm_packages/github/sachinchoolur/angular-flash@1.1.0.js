@@ -1,0 +1,1 @@
+module.exports = require("github:sachinchoolur/angular-flash@1.1.0/dist/angular-flash");

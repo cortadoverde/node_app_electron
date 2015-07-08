@@ -35,7 +35,7 @@ app.on('ready', () => {
                         mainWindow.destroy();
                     }
                 }
-            ]   
+            ]
         },
         {
             label : 'Ver',
@@ -67,10 +67,10 @@ app.on('ready', () => {
             ]
         }
     ]);
-   
-    
-    
-    mainWindow.setMenu(menu);
+
+
+
+    //mainWindow.setMenu(menu);
 
     mainWindow.loadUrl('file://' + __dirname + '/../client/index.html');
 
@@ -88,12 +88,12 @@ app.on('ready', () => {
 /**
  * Eventos para el cronometro
  *   Namespace: crono
- *   Call: crono-{{action}} 
+ *   Call: crono-{{action}}
  */
 ipc.on('crono-check', (_event, arg) => {
     let resp = Tablero.isConnect ? 'connected' : 'disconnected';
    _event.returnValue = Tablero.isConnect;
-   _event.sender.send('crono-check-repply', resp ); 
+   _event.sender.send('crono-check-repply', resp );
 })
 
 ipc.on('crono-connect', (_event, ipConnection) => {
@@ -119,6 +119,7 @@ ipc.on('crono-send', (_event, _command) => {
 Tablero.on('error', () => {
     var d = arguments;
     mainWindow.webContents.send('crono-error', d);
+    console.error(d);
 })
 
 Tablero.on('ready', () => {

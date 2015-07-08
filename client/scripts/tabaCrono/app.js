@@ -4,10 +4,13 @@ import 'angular-animate';
 import 'likeastore/ngDialog';
 import 'sachinchoolur/angular-flash';
 
+import moment from 'moment';
+
 import { tabaSubmenuDirective } from './directives/taba/submenu';
 import { textCtrl } from './controllers/text';
 import { marqueeCtrl } from './controllers/marquee';
 import { cronoCtrl } from './controllers/crono';
+import { countDownCtrl } from './controllers/countdown';
 import { tabaCtrl } from './controllers/taba';
 import { configCtrl } from './controllers/config';
 
@@ -16,17 +19,22 @@ var app = angular.module('TabaCrono', ['ngRoute','flash', 'ngAnimate']);
 
 app.config( function ($routeProvider) {
     $routeProvider
-        
+
         .when('/', {
             templateUrl : 'views/home.html',
             controller  : 'cronoCtrl'
+        })
+
+        .when('/countdown', {
+            templateUrl : 'views/countdown.html',
+            controller  : 'countDownCtrl'
         })
 
         .when('/marquesina', {
             templateUrl : 'views/marquesina.html',
             controller  : 'marqueeCtrl'
         })
-        
+
         .when('/texto', {
             templateUrl : 'views/texto.html',
             controller  : 'textCtrl'
@@ -34,7 +42,7 @@ app.config( function ($routeProvider) {
 
         .when('/configuracion', {
             templateUrl : 'views/config.html',
-            controller  : 'configCtrl' 
+            controller  : 'configCtrl'
         })
 
         .otherwise({
@@ -47,7 +55,7 @@ app.run( function ( $rootScope, $window ) {
 
     if( typeof $window.localStorage.config != 'undefined' ) {
         $rootScope.config = JSON.parse( $window.localStorage.config );
-        console.log($rootScope.config);
+
     }
 
     $rootScope.$on('$routeChangeSuccess', function ( newVal, oldVal ) {
@@ -59,6 +67,7 @@ app.run( function ( $rootScope, $window ) {
 
 app.controller('tabaCtrl', tabaCtrl);
 app.controller('cronoCtrl', cronoCtrl );
+app.controller('countDownCtrl', countDownCtrl );
 app.controller('textCtrl', textCtrl );
 app.controller('marqueeCtrl', marqueeCtrl );
 app.controller('configCtrl', configCtrl );
@@ -90,14 +99,14 @@ app.directive('tabaRemoveHiddenReady', function(){
 })
 
 app.filter('tabaOnOf', function( val ) {
-    if( ! val ) 
+    if( ! val )
         return 'Conectar';
     return 'Desconectar';
 })
 
 app.filter('tabaOnOf', function() {
     return function( val ) {
-        if( ! val ) 
+        if( ! val )
             return 'Conectar';
         return 'Desconectar';
     }
@@ -105,7 +114,7 @@ app.filter('tabaOnOf', function() {
 
 app.filter('tabaOnOfClass', function() {
     return function( val ) {
-        if( ! val ) 
+        if( ! val )
             return 'green';
         return 'red';
     }
@@ -120,7 +129,7 @@ app.filter('uiGrid', function() {
                 'fourteen','fifteen','sixteen'
             ];
 
-        if( typeof name[column] !== 'undefined' ) 
+        if( typeof name[column] !== 'undefined' )
             return name[column];
         return name[(name.length-1)];
     }

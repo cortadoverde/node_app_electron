@@ -24,6 +24,7 @@ System.config({
     "gtramontina/angular-flash": "github:gtramontina/angular-flash@1.2.0",
     "likeastore/ngDialog": "github:likeastore/ngDialog@0.4.0",
     "mateu-aguilo-bosch/message-center": "github:mateu-aguilo-bosch/message-center@1.1.4",
+    "moment": "github:moment/moment@2.10.3",
     "sachinchoolur/angular-flash": "github:sachinchoolur/angular-flash@1.1.0",
     "wmluke/angular-flash": "github:wmluke/angular-flash@0.1.14",
     "github:angular/bower-angular-animate@1.4.1": {
@@ -45,4 +46,3 @@ System.config({
     }
   }
 });
-

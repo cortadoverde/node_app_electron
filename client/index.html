@@ -18,7 +18,7 @@
         .taba-hidden {
           visibility: none;
           opacity: 0;
-        }       
+        }
         .alert.customAlert {
           box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 10px;
           min-width: 350px;
@@ -33,17 +33,18 @@
   </head>
     <body ng-controller="tabaCtrl" class="ui loading segment" taba-remove-loading-ready>
 
-      <div  class="ui segment">      
+      <div  class="ui segment">
         <div flash-message="5000" ></div>
-        <div class="ui five buttons taba-hidden" taba-remove-hidden-ready >
+        <div class="ui six buttons taba-hidden" taba-remove-hidden-ready >
           <a class="ui button" ng-href="#/">Cronometro</button>
+          <a class="ui button" ng-href="#/countdown">Cuenta regresiva</button>
           <a class="ui button" ng-href="#/marquesina">Marquesina</button>
           <a class="ui button" ng-href="#/texto">Texto fijo</button>
           <a class="ui button" ng-href="#/configuracion">Configurar</a>
           <a class="ui {{ tablero.connected | tabaOnOfClass }} button" ng-click="switch()"> {{ tablero.connected | tabaOnOf }}</a>
-         
-        </div>   
-            
+
+        </div>
+
         <div class="ui icon warning message taba-hidden" taba-remove-hidden-ready ng-show="tablero.connecting">
           <i class="notched spinner loading icon"></i>
           <div class="content">
@@ -65,12 +66,12 @@
           </div>
         </div>
 
-        <div ng-view style="margin-top:1em">        
-            
+        <div ng-view style="margin-top:1em">
+
 
         </div>
-        
-        
+
+
 
       </div>
     </body>

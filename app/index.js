@@ -61,7 +61,7 @@ app.on('ready', function () {
         }]
     }]);
 
-    mainWindow.setMenu(menu);
+    //mainWindow.setMenu(menu);
 
     mainWindow.loadUrl('file://' + __dirname + '/../client/index.html');
 
@@ -77,7 +77,7 @@ app.on('ready', function () {
 /**
  * Eventos para el cronometro
  *   Namespace: crono
- *   Call: crono-{{action}} 
+ *   Call: crono-{{action}}
  */
 ipc.on('crono-check', function (_event, arg) {
     var resp = Tablero.isConnect ? 'connected' : 'disconnected';
@@ -107,6 +107,7 @@ ipc.on('crono-send', function (_event, _command) {
 Tablero.on('error', function () {
     var d = _arguments;
     mainWindow.webContents.send('crono-error', d);
+    console.error(d);
 });
 
 Tablero.on('ready', function () {
